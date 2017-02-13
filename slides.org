@@ -1,0 +1,344 @@
+* Slide Options                           :noexport:
+# ======= Appear in cover-slide ====================
+#+TITLE: TensorFlow in NLP
+#+SUBTITLE: An Introduction
+#+COMPANY: OpenShine
+#+AUTHOR: Santiago Saavedra
+#+EMAIL: ssaavedra@openshine.com
+
+# ======= Appear in thank-you-slide ================
+#+GOOGLE_PLUS: https://plus.google.com/+SantiagoSaavedra
+#+WWW: https://ssaavedra.github.io
+#+GITHUB: https://github.com/ssaavedra
+#+TWITTER: ssice
+
+# ======= Appear under each slide ==================
+#+FAVICON: images/tensorflow-logo.jpg
+#+ICON: images/tensorflow-logo.jpg
+#+HASHTAG: #TFDevSummitMadrid
+
+# ======= Google Analytics =========================
+#+ANALYTICS: UA-000000000-0
+
+# ======= Org settings =========================
+#+EXCLUDE_TAGS: noexport
+#+OPTIONS: toc:nil num:nil
+
+* License
+  #+BEGIN_CENTER
+
+  #+BEGIN_EXPORT html
+  This is an original work created by Santiago Saavedra, and placed under a
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+  Creative Commons Attribution-ShareAlike 4.0 International</a>
+  license.
+  #+END_EXPORT
+
+  [[https://i.creativecommons.org/l/by-sa/4.0/88x31.png]]
+
+  - Some images are original artwork by Sofia Prosper, released under a
+    CC-By-SA 4.0 license, and available at her DeviantArt page.
+
+  - TensorFlow images are from tensorflow.org and are licensed under
+    CC-By 3.0.
+
+  - Other images are from the Public Domain and bear no rights.
+
+  #+END_CENTER
+
+* About me
+
+
+  #+ATTR_HTML: :class float-right
+  [[https://avatars3.githubusercontent.com/u/581152?v=3&s=320&name=avatar.jpg]]
+
+  - Fan of
+    - Lisp, Haskell, Scala...
+    - Distributed Systems
+    - Science
+  - Did researched in Collaborative Editing
+  - Co-founded and failed startup
+  - Currently
+    - PhD Student in formal methods
+    - Hacker at OpenShine
+
+* OpenShine
+  - Software Engineering
+  - No bullshit
+  - Small teams
+  - Remote-first
+  - Leaned towards a FLOSS stack
+
+  #+BEGIN_CENTER
+  #+attr_html: :width 500px
+  [[./images/openshine-logo.svg]]
+  #+END_CENTER
+
+
+* Outline
+  - What is TensorFlow
+  - Natural Language Processing
+  - Combining both
+    - word2vec
+    - RNN
+    - SyntaxNet
+
+* WTF
+  :PROPERTIES:
+  :ARTICLE:  flexbox vleft auto-fadein
+  :ASIDE:    left bottom
+  :SLIDE:    light segue
+  :END:
+  
+  What is TensorFlow?
+
+  #+ATTR_HTML: :style position:absolute;bottom:0px;right:100px
+  [[file:images/wtf-segue.svg]]
+  
+
+* WTF
+  #+ATTR_HTML: :class build
+  - General-purpose graph-based distributed computing framework
+  - Glorified functional programming
+  - Twist: easy to parallellize
+
+  #+BEGIN_CENTER
+  #+ATTR_HTML: :width 700px
+  [[file:images/wtf-1.svg]]
+  #+END_CENTER
+  
+** Why a graph computing
+   - Neural Networks are computational graphs
+
+   [[file:images/wtf-2.svg]]
+
+** Tensors
+
+   #+BEGIN_QUOTE
+   Tensors are geometric objects that describe linear relations
+   between geometric vectors, scalars and other tensors.
+
+   -- [[https://en.wikipedia.org/wiki/Tensor][Multiple Authors, Wikipedia]]
+   #+END_QUOTE
+
+** Tensor properties
+   - Rank
+   - Magnitude
+
+** Tensors by example
+   #+ATTR_HTML: :class build
+   - Rank 0: $1$
+   - Rank 1: $(1, 1, 1)$
+   - Rank 2 $\begin{bmatrix}1 & 2 & 3 \\ 4 & 5 & 4\end{bmatrix}$
+   - Rank 3 $\begin{bmatrix}(1, 1) & (2, 2) \\ (3, 3) & (4, 4) \\ (1, 1) & (6, 6)\end{bmatrix}$
+   - Rank 4
+     - Imagine...
+
+** TensorFlow as a Tensor Operations Framework
+
+   ~image goes here~
+
+* Neural Networks
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+  Briefly,
+
+* Neurons (natural ones)
+
+  file:images/neuron-real.svg
+
+* Neurons (artificial ones)
+
+  file:images/rosenblattperceptron_wikimedia.png [fn:5]
+
+
+* NN Architectures
+  - Perceptron
+  - Radial-base networks
+  - ART
+  - Recurrent Neural Networks
+    - Long Short-Term Memory Networks
+    - Fast Weight networks
+  - $$\lim_{research\rightarrow\infty}NN = \cdots$$
+
+* Natural Language Processing
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+  Because humans are complicated.
+
+* NLP Basics
+  :PROPERTIES:
+  :ARTICLE:  large
+  :END:
+  #+ATTR_HTML: :class build
+  - *Processing* $\neq$ /understanding/  , in fact,
+  - Processing $\ni$ understanding
+  - Sub-branch of AI
+    - yada, yada...
+
+** NLP sub-fields
+   :PROPERTIES:
+   :ARTICLE:  larger
+   :END:
+   - POS Tagging
+   - NE Recognition
+   - Sentiment analysis
+   - Question Answering
+   - NL Understanding
+   - Machine translation
+   - ...
+
+** Warning
+
+   Sometimes natural language stuff is just uncomprehensible. I mean,
+   us humans are some times not coherent in our speech and we
+   ourselves have problems understanding each other.
+
+** POS Tagging
+   Old-school syntax tree derivation (or simplified models). But done
+   by robots.
+
+   #+BEGIN_SRC text
+   This kitten is awake.
+   ---- ------ -- -----
+   Det    N    V   Adj
+   #+END_SRC
+
+** Sentiment analysis
+
+   Crude
+
+   | "/good/" | +1 |
+   | "/bad/"  | -1 |
+   |----------+----|
+   | $\Sigma$ |  0 |
+
+   - $\text{not }x := -1 \times x$
+   - $\text{barely }x := 0.5 \times x$
+
+* Knowledge representation
+
+  - Symbols
+    - Arbitrary
+    - Rel. $=, \neq$
+    - Semantic rel. to other symbols
+    - E.g., WordNet
+    - Meaning cannot be inferred
+  - Vectors
+    - Grounded in a n-dim space
+    - Rel. $||x||, \bowtie$
+    - Semantic rel. of distance in space
+    - Can be learned from experience
+
+** Embeddings
+   Vectorizations of categorical constructs. TF learns about them via
+   Deep Reinforcement Learning.
+
+   Analysis: PCA, sparsity and perplexity.
+
+** Embeddings example
+   :PROPERTIES:
+   :FILL:     images/human-embeddings.svg
+   :TITLE:    white
+   :SLIDE:    white
+   :END:
+
+* Examples
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+
+* Word2vec
+  Model used to produce word embeddings.[fn:1]
+
+  Transforms words in a corpus to vectors in a >100-dim space.
+ 
+  There is a tutorial in the TensorFlow official page.[fn:2]
+
+* Recurrent Neural Networks
+  Language modelling.
+
+  Goal: fit a model to assign probabilities to sentences.
+
+  Predict next word in a text given history of previous ones.
+
+  Example: LSTM (Long Short-Term Memory).[fn:3]
+
+  Example: Fast Weights.[fn:4]
+
+** Usage: machine translation
+   Tutorial: https://www.tensorflow.org/tutorials/seq2seq/
+
+   - Encoder: LSTM
+   - Decoder: LSTM
+   - Attention mechanism to peek input at every decoding step
+
+* SyntaxNet
+  TensorFlow model for NLP, available at: https://github.com/tensorflow/models/tree/master/syntaxnet
+
+  Includes:
+  - Parsey McParseface
+
+** Example
+   #+BEGIN_SRC shell :exports code
+   echo "My dear friend, tell me a joke." | docker run --rm -i brianlow/syntaxnet
+   #+END_SRC
+
+   #+BEGIN_EXAMPLE
+     Input: My dear friend , tell me a joke .
+     Parse:
+     tell VB ROOT
+      +-- friend NN nsubj
+      |   +-- My PRP$ poss
+      |   +-- dear JJ amod
+      +-- , , punct
+      +-- me PRP iobj
+      +-- joke NN dobj
+      |   +-- a DT det
+      +-- . . punct
+   #+END_EXAMPLE
+  
+
+* Where are the slides?
+  For your convenience:
+  [[https://github.com/ssaavedra/tf-nlp-intro-slides]]
+
+  #+BEGIN_CENTER
+  [[https://chart.googleapis.com/chart?cht=qr&chs=340x340&chl=https://github.com/ssaavedra/tf-nlp-intro-slides/&name=chart.jpg]]
+  #+END_CENTER
+
+* Feedback, please
+  https://goo.gl/forms/l7z9JmOe4O3XT95v1
+
+  #+BEGIN_CENTER
+  https://chart.googleapis.com/chart?cht=qr&chs=380x380&chl=https://goo.gl/forms/l7z9JmOe4O3XT95v1&name=chart.jpg
+  #+END_CENTER
+
+
+* Thank you!
+  :PROPERTIES:
+  :SLIDE:    thank-you-slide segue
+  :ASIDE:    right
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+
+* Footnotes
+
+[fn:4] https://arxiv.org/abs/1610.06258
+
+[fn:5] Image by Mitchell under CC By-SA 3.0 Unported. [[https://commons.wikimedia.org/wiki/File:Rosenblattperceptron.png][Source]]
+
+[fn:3] [[http://dx.doi.org/10.1162%2Fneco.1997.9.8.1735][DOI 10.1162/neco.1997.9.8.1735]]
+
+[fn:2] https://www.tensorflow.org/tutorials/word2vec/
+
+[fn:1] https://en.wikipedia.org/wiki/Word2vec
+
