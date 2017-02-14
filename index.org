@@ -15,7 +15,7 @@
 # ======= Appear under each slide ==================
 #+ICON: images/tensorflow-logo.jpg
 #+FAVICON: images/openshine-icon.svg
-#+HASHTAG: #TFDevSummitMadrid
+#+HASHTAG: @ssice #TFDevSummitMadrid
 
 # ======= Google Analytics =========================
 #+ANALYTICS: UA-000000000-0

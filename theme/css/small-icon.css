@@ -1,7 +1,7 @@
 slides > slide:not(.nobackground):before {
 background: url(../../images/openshine-icon.svg) no-repeat 0 50%;
 font-size: 12pt;
-content: "#TFDevSummitMadrid";
+content: "@ssice #TFDevSummitMadrid";
 position: absolute;
 bottom: 20px;
 left: 60px;
