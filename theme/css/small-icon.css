@@ -1,5 +1,5 @@
 slides > slide:not(.nobackground):before {
-background: url(../../images/tensorflow-logo.jpg) no-repeat 0 50%;
+background: url(../../images/openshine-icon.svg) no-repeat 0 50%;
 font-size: 12pt;
 content: "#TFDevSummitMadrid";
 position: absolute;
