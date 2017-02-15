@@ -63,17 +63,18 @@
     - TensorFlow Fan
 
 * OpenShine
+  #+attr_html: :width 500px
+  #+ATTR_HTML: :class float-right
+  [[./images/openshine-logo.svg]]
+
   - Software Engineering
+    - Web
+    - Data analysis
+    - Devops
   - No bullshit
   - Small teams
   - Remote-first
   - Leaned towards a FLOSS stack
-
-  #+BEGIN_CENTER
-  #+attr_html: :width 500px
-  [[./images/openshine-logo.svg]]
-  #+END_CENTER
-
 
 * Outline
   :PROPERTIES:
