@@ -44,8 +44,7 @@
   - Public Domain artwork.
 
 
-* About me
-
+* About me: Santiago Saavedra
 
   #+ATTR_HTML: :class float-right
   [[https://avatars3.githubusercontent.com/u/581152?v=3&s=320&name=avatar.jpg]]
