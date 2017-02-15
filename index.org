@@ -57,6 +57,7 @@
   - Did researched in Collaborative Editing
   - Co-founded and failed startup
   - Currently
+    - President of [[https://labs.gpul.org][GPUL]]
     - PhD Student in formal methods
     - Hacker at OpenShine
     - TensorFlow Fan
