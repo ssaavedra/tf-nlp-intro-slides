@@ -18,7 +18,7 @@
 #+HASHTAG: @ssice #TFDevSummitMadrid
 
 # ======= Google Analytics =========================
-#+ANALYTICS: UA-000000000-0
+#+ANALYTICS: UA-91998597-1
 
 # ======= Org settings =========================
 #+EXCLUDE_TAGS: noexport
