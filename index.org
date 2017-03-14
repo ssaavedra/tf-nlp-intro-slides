@@ -365,6 +365,21 @@
   :ARTICLE:  flexbox vleft auto-fadein
   :END:
 
+* Additional notes
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+  These notes were not part of the original presentation, but clarify
+  a question from the audience in TF Dev Summit Streaming Madrid.
+** Zero-Shot Translation with Google's Multilingual Machine Translation System
+   The question in the audience referred to this [[https://research.googleblog.com/2016/11/zero-shot-translation-with-googles.html][post]] (paper at [[https://arxiv.org/abs/1611.04558][arXiv
+   1161.04558]]), which I was not aware of at the moment of the
+   presentation. As the questioner said, there seems to be some sort
+   of intermdiate knowledge of languages, but it is not really a
+   language that can be spoken as such, although it does seem a very
+   interesting framework indeed.
 * Footnotes
 
 [fn:11] CC-By 3.0 by the TensorFlow Contributors
